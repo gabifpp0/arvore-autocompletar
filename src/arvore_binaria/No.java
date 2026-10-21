@@ -1,13 +1,12 @@
 package arvore_binaria;
 
-public class No<T extend Compareble<T>> {
+public class No<T extends Comparable<T>> {
     T dado;
     No<T> esquerda;
     No<T> direita;
     No<T> pai;
 
-
-    //construtor 
+    // Construtor
     public No(T dado) {
         this.dado = dado;
         this.esquerda = null;
@@ -15,43 +14,36 @@ public class No<T extend Compareble<T>> {
         this.pai = null;
     }
 
-    //inserir dado 
-    public void inserir (T dado) {
+    // Inserir dado
+    public void inserir(T dado) {
         int comparacao = this.dado.compareTo(dado);
-
-        if (comparacao > 0){
+        
+        if (comparacao > 0) {
             if (this.esquerda == null) {
                 this.esquerda = new No<T>(dado);
                 this.esquerda.pai = this;
-            } else {
-                this.esquerda.inserir(dado);
-            }
+            } else this.esquerda.inserir(dado);
         } else if (comparacao < 0) {
-            if (this.direita = null) {
+            if (this.direita == null) {
                 this.direita = new No<T>(dado);
                 this.direita.pai = this;
-            } else {
-                this.direita.inserir(dado);
-            }
+            } else this.direita.inserir(dado);
         }
     }
 
-    //buscar
+    // Buscar
     public No<T> buscarNo(T dado) {
         int comparacao = this.dado.compareTo(dado);
-
-        if (comparacao = 0) {
+        
+        if (comparacao == 0) {
             return this;
         }
-
         if (comparacao > 0 && this.esquerda != null) {
             return this.esquerda.buscarNo(dado);
         }
-
         if (comparacao < 0 && this.direita != null) {
             return this.direita.buscarNo(dado);
         }
-
         return null;
     }
 }
