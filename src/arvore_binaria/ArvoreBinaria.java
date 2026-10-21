@@ -163,4 +163,41 @@ public class ArvoreBinaria<T extends Comparable<T>> {
         }
         buscarInfixoRecursivo(atual.direita, infixo, resultado);
     }
+
+    // Remover todas as palavras que terminam com o sufixo
+    public int removerPorSufixo(String sufixo) {
+        List<T> palavras = buscarSufixo(sufixo);
+        for (T palavra : palavras) {
+            remover(palavra);
+        }
+        return palavras.size();
+    }
+
+    // Remover todas as palavras que contêm o infixo
+    public int removerPorInfixo(String infixo) {
+        List<T> palavras = buscarInfixo(infixo);
+        for (T palavra : palavras) {
+            remover(palavra);
+        }
+        return palavras.size();
+    }
+
+    // Remover todas as palavras da árvore
+    public int removerTodas() {
+        int quantidade = contarNos(this.raiz);
+        this.raiz = null;
+        return quantidade;
+    }
+
+    private int contarNos(No<T> atual) {
+        if (atual == null) {
+            return 0;
+        }
+        return 1 + contarNos(atual.esquerda) + contarNos(atual.direita);
+    }
+
+    // Consultar se a palavra existe na árvore
+    public boolean consultar(T dado) {
+        return buscar(dado) != null;
+    }
 }

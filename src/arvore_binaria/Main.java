@@ -68,32 +68,28 @@ public class Main {
                     System.out.print("Digite o sufixo: ");
                     palavra = scanner.nextLine();
 
-                    for (String p : arvore.buscarSufixo(palavra)) {
-                        arvore.remover(p);
-                    }
-                    System.out.println("Palavras removidas!");
+                    System.out.println("Removidas: "
+                            + arvore.removerPorSufixo(palavra));
                     break;
 
                 case 5:
                     System.out.print("Digite o infixo: ");
                     palavra = scanner.nextLine();
 
-                    for (String p : arvore.buscarInfixo(palavra)) {
-                        arvore.remover(p);
-                    }
-                    System.out.println("Palavras removidas!");
+                    System.out.println("Removidas: "
+                            + arvore.removerPorInfixo(palavra));
                     break;
 
                 case 6:
-                    arvore = new ArvoreBinaria<>();
-                    System.out.println("Todas as palavras foram removidas!");
+                    System.out.println("Removidas: "
+                            + arvore.removerTodas());
                     break;
 
                 case 7:
                     System.out.print("Digite a palavra: ");
                     palavra = scanner.nextLine();
 
-                    if (arvore.buscar(palavra) != null) {
+                    if (arvore.consultar(palavra)) {
                         System.out.println("Palavra encontrada!");
                     } else {
                         System.out.println("Palavra não encontrada!");
